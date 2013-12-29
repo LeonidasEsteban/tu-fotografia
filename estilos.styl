@@ -1,0 +1,189 @@
+@import "classes.styl"
+*
+	margin 0
+body
+	background black
+	color white
+	font-family Arial
+	font-family: 'Open Sans', sans-serif;
+	font-size 16px
+	margin 0
+	background-repeat no-repeat
+	background-position center
+
+.fotos
+	position absolute
+	top 0
+	left 0
+	right 0
+	bottom 0
+	overflow hidden
+.profile
+	position absolute
+	bottom 5px
+	left 0
+	z-index 3
+	background linear-gradient(left, white 0, rgba(white,0) 70%)
+	line-height 40px
+	right 0
+	color black
+	@extends .clearfix
+	img
+		float left
+	p
+		margin-left 50px
+		font-size 20px
+		text-transform uppercase
+
+
+.acciones
+	text-align right
+	position relative
+	z-index 3
+.cancion
+	bottom 0
+	color white
+	font-size 35px
+	left 10px
+	position absolute
+	right 10px
+	text-align center
+	top 0
+	z-index 2
+	p
+		white-space pre-line
+		background rgba(black,.5)
+		border-radius 10px
+		display none
+		padding 30px 20px 20px 30px
+		text-align center
+		&.active
+			position relative
+			top 100px
+			display inline-block
+			animation 1s opacidad linear
+
+.si
+.no
+	background pink
+	width 30px
+	font-size 20px
+	line-height 30px
+	text-align center
+	box-sizing border-box
+	border 1px solid white
+	display inline-block
+	color black
+	text-decoration none
+	border-radius 50%
+	margin-right 20px
+@keyframes opacidad
+	0%
+		opacity 0
+		top 150px
+	100%
+		opacity 100%
+		top 100px
+.log-in
+	background linear-gradient(top, #517FA4 0%, #306088 100%)
+	border-radius 3px
+	box-sizing border-box
+	color white
+	display inline-block
+	font-family Arial
+	font-size 20px
+	height 50px
+	left 50%
+	line-height 50px
+	margin-left -100px
+	position absolute
+	text-align center
+	text-decoration none
+	top 0
+	transition 1s
+	width 200px
+
+	&.hidden
+		display none
+	img
+		width 38px
+		right 10px
+		top 8px
+		border none
+		opacity 1
+		background transparent
+		transform none
+		position absolute
+audio 
+	position absolute
+	top 50%
+	left 50%
+	transition .3s
+	width 50px
+audio::-webkit-media-controls-play-button
+video::-webkit-media-controls-play-button
+	-webkit-appearance none
+	width 50px
+	height 50px 
+	// background red
+	cursor pointer
+audio::-webkit-media-controls-panel
+video::-webkit-media-controls-panel
+	border-radius 0
+.loading
+	height:  1px;
+	left: 0;
+	position:  absolute;
+	top: 0;
+	transition:3s;
+	width: 0px;
+.sonando
+	height 5px 
+	width 0
+	transition 272s linear
+	background red
+	position absolute
+	bottom 0
+	left 0
+	z-index 3
+
+	&.play
+		width 100%
+
+.loading.cargue{
+	width: 100%;
+}
+#fotos{
+	width: 640px;
+}
+.foto
+	background white
+	border 10px solid white
+	border-bottom 40px solid white
+	display block
+	margin 0 auto
+	opacity 0
+	position: absolute;
+	top 0
+	transform rotate(90deg) scale(3);
+	transition 1s
+	min-width 200px
+	min-height 200px
+
+.animacion
+	animation 1s anim
+
+@keyframes anim
+	0%
+		opacity 0;
+		transform rotate(90deg) scale(3);
+	
+	100%
+		opacity 1;
+		transform rotate(10deg) scale(1);
+
+@media screen and (max-width:720px)
+	.foto
+		zoom .5
+	.cancion
+		font-size 20px
