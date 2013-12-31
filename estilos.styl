@@ -2,14 +2,14 @@
 *
 	margin 0
 body
-	background black
+	background url('images/background.jpg')
 	color white
-	font-family Arial
 	font-family: 'Open Sans', sans-serif;
 	font-size 16px
 	margin 0
+	background-size cover
 	background-repeat no-repeat
-	background-position center
+	background-position-x right
 
 .fotos
 	position absolute
@@ -34,6 +34,7 @@ body
 		margin-left 50px
 		font-size 20px
 		text-transform uppercase
+		white-space nowrap
 
 
 .acciones
@@ -85,26 +86,40 @@ body
 		opacity 100%
 		top 100px
 .log-in
-	background linear-gradient(top, #517FA4 0%, #306088 100%)
-	border-radius 3px
-	box-sizing border-box
-	color white
-	display inline-block
-	font-family Arial
-	font-size 20px
-	height 50px
-	left 50%
-	line-height 50px
-	margin-left -100px
-	position absolute
 	text-align center
-	text-decoration none
-	top 0
-	transition 1s
-	width 200px
+	// margin-top 100px
+	position relative
+	z-index 3
+	.content
+		border-radius 10px
+		background white
+		box-sizing border-box
+		display inline-block
+		font-size 20px
+		left 50%
+		text-align center
+		top 0
+		transition 1s
+		padding 20px
+		color black
+	// &.hidden
+	// 	display none
+	.btn
+		// width 200px
+		padding 15px 20px
+		display block
+		color white
+		text-decoration none
+		border-radius 3px
+		cursor pointer
+		position relative
+		&.facebook
+			background #6D84B4
+			margin-bottom 20px
+		&.instagram
+			background linear-gradient(top, #517FA4 0%, #306088 100%)
+			font-family Arial
 
-	&.hidden
-		display none
 	img
 		width 38px
 		right 10px
@@ -114,12 +129,7 @@ body
 		background transparent
 		transform none
 		position absolute
-audio 
-	position absolute
-	top 50%
-	left 50%
-	transition .3s
-	width 50px
+
 audio::-webkit-media-controls-play-button
 video::-webkit-media-controls-play-button
 	-webkit-appearance none
@@ -141,7 +151,7 @@ video::-webkit-media-controls-panel
 	height 5px 
 	width 0
 	transition 272s linear
-	background red
+	background #77B0DD
 	position absolute
 	bottom 0
 	left 0
@@ -149,7 +159,68 @@ video::-webkit-media-controls-panel
 
 	&.play
 		width 100%
+	&.midnight
+		transition 242s linear
+.salir
+	position absolute
+	right 0
+	top 0
+	background white
+	color black
+	padding 0 10px
+	text-decoration none 
+.audio
+	background black
+	border-radius 50%
+	cursor pointer
+	height 50px
+	left 50%
+	margin-left -25px
+	overflow hidden
+	position absolute
+	transition .3s
+	width 50px
+	.rep
+		position absolute
+		border-left 30px solid white
+		left 15px
+		top 5px
+		border-top 20px solid transparent
+		border-bottom 20px solid transparent
 
+	audio
+		position absolute
+		left 0 
+		top 5px
+		width 50px
+		z-index 2
+		opacity 0
+.texto
+	background rgba(black,.5)
+	font-size 40px
+	opacity 0
+	position absolute
+	white-space nowrap
+	&.anim1
+		left -100%
+		animation 6s anim1 linear
+	&.anim2
+		right -100%
+		text-align right
+		animation 6s anim2 linear
+		
+@keyframes anim1
+	0%
+		opacity 1
+		left 100%
+	100%
+		left -100%
+@keyframes anim2
+	0%
+		opacity 1
+		right 100%
+	100%
+		right -100%
 .loading.cargue{
 	width: 100%;
 }
@@ -168,8 +239,10 @@ video::-webkit-media-controls-panel
 	transform rotate(90deg) scale(3);
 	transition 1s
 	min-width 200px
-	min-height 200px
-
+	&.instagram
+		min-height 200px
+	&.facebook
+		min-height none
 .animacion
 	animation 1s anim
 
@@ -181,9 +254,28 @@ video::-webkit-media-controls-panel
 	100%
 		opacity 1;
 		transform rotate(10deg) scale(1);
+@media screen and (max-width:1280px)
+	.audio
+		&.hidden
+			display block
+@media screen and (max-width:1366px)
+	body
+		background-size auto
 
-@media screen and (max-width:720px)
+@media screen and (max-width:767px)
 	.foto
 		zoom .5
 	.cancion
 		font-size 20px
+	.texto
+		background rgba(black,.5)
+		font-size 20px
+		opacity 0
+		position absolute
+		white-space nowrap
+		&.anim1
+			animation 4s anim1 linear
+		&.anim2
+			text-align right
+			animation 4s anim2 linear
+

@@ -23,10 +23,22 @@
         <div class="profile hidden">
             <img src="" alt="" class="avatar" width="40" height="40"/>
             <p class="username"></p>
+            <a href="" class="salir">Salir</a>
         </div>
         <div class="acciones">
-            <audio type="audio/mpeg" preload class="musica"></audio>
-            <a href="" class="log-in hidden">Entrar <img src="//badges.instagram.com/static/images/ig-badge-48.png" alt="Instagram" /></a>
+            <!-- <div id="fb-root"></div> -->
+            <!-- <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> -->
+            <div class="audio hidden">
+                <div class="rep"></div>
+                <audio type="audio/mpeg" preload class="musica"></audio>
+            </div>
+        </div>
+        <div class="log-in hidden">
+            <div class="content">
+                <h1>Tu Fotografía</h1>
+                <a href="" class="btn facebook">Facebook</a>
+                <a href="" class="btn instagram">Instagram <img src="//badges.instagram.com/static/images/ig-badge-48.png" alt="Instagram" /></a>
+            </div>
         </div>
         <div class="sonando"></div>
         <div class="cancion">
@@ -87,6 +99,7 @@
 
     </div>
     <script src="jquery.js"></script>
+    <script src="//connect.facebook.net/en_UK/all.js"></script>
     <script src="tu-fotografia.js"></script>
     <script type="text/javascript">
 
