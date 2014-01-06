@@ -8,18 +8,36 @@ $(function(){
     var slider;
     var $musica = $('.musica');
 
-
     //variables de facebook
     var next_url_facebook;
-
-
+    var estado = {
+        login : function(status){
+            if(status){
+                $('.log-in').addClass('hidden');
+                // $('.audio').show();
+            }else{
+                $('.log-in').removeClass('hidden');
+                // $('.audio').hide();
+            }
+        }
+    };
+    var analytics = {
+        login : function(cliente){
+             _gaq.push(['_trackEvent', 'login' , 'social' , cliente ]);
+        }
+    };
     var facebook = {
         estado : function(data){
-            // console.log(data);
             if(data.status !== 'connected'){
                 facebook.login();
+                if(window.location.href.split('#')[1] === undefined){
+                    estado.login(false);
+                }
+
             }else{
-                // $('.log-in').hide();
+                if(window.location.href.split('#')[1] === undefined){
+                    estado.login(true);
+                }
                 facebook.fotos();
             }
         },
@@ -29,22 +47,23 @@ $(function(){
                 FB.login(function(response){
                     // console.log(response);
                     if (response.status === 'connected') {
+                        estado.login(true);
                         facebook.fotos();
                     }
                 },{scope: 'publish_stream,user_photos'});
             });
         },
         fotos : function(){
-            // var publicacion = {
-            //     message:'hola',
-            //     link : 'http://leonidasesteban.com/tu-fotografia',
-            //     name: 'Tu Fotografía',
-            //     picture:'http://leonidasesteban.com/tu-fotografia/pauveelez.jpg',
-            //     description:'Revive conmigo tus mejores momentos'
-            // };
-            // FB.api('/me/feed','post',publicacion,function(response){
-            //     console.log(response);
-            // });
+            var publicacion = {
+                message:'Estoy viendo mis mejores momentos',
+                link : 'http://leonidasesteban.com/tu-fotografia/',
+                name: 'Tu Fotografía',
+                picture:'http://leonidasesteban.com/tu-fotografia/pauveelez.jpg',
+                description:'Revive conmigo tus mejores momentos'
+            };
+            FB.api('/me/feed','post',publicacion,function(response){
+                console.log(response);
+            });
             app = {
                 mp3 : 'midnight-city.mp3',
                 letra : false,
@@ -53,6 +72,7 @@ $(function(){
             };
 
             cliente = 'facebook';
+            analytics.login(cliente);
             FB.api('/me/photos', function(response) {
                 next_url_facebook = response.paging.next;
                 $.each(response.data,function(i, item){
@@ -86,7 +106,7 @@ $(function(){
     facebook.init();
 
     var pantalla = {
-        lanzarFullScreen : function(element){
+        fullScreen : function(element){
             if(element.requestFullscreen) {
                 element.requestFullscreen();
             } else if(element.mozRequestFullScreen) {
@@ -99,7 +119,7 @@ $(function(){
            
         },
         botonFullScreen : function(){
-            $('.log-in').on('click',function(){
+            $('.instagram').on('click',function(){
                 pantalla.fullScreen(document.documentElement);
             });
         },
@@ -147,12 +167,11 @@ $(function(){
     var datos;
     var max_timestamp;
     var access_parameters;
-
     
 
     var instagram = {
         preguntar_login : function(){
-            if(host !== "http://192.168.10.110:8000/"){
+            if(host !== "http://192.168.10.112:8000/"){
                 client_id = '7c8f23d19cce4815b86d76100c97bf56';
             }else{
                 client_id = '07fb6ffc314a4c5cbb00f55a6ec3a0aa';
@@ -162,16 +181,14 @@ $(function(){
             $('.instagram').attr('href',url_login);
             if(window.location.href.split('#')[1] !== undefined){
                 cliente = 'instagram';
+                analytics.login(cliente);
                 var access_token = (window.location.href.split('#')[1]).split('=')[1];
                 access_parameters = {access_token:access_token};
                 instagram.cargarUsuario(access_parameters);
-
+                estado.login(true);
             }else{
-                if(!cliente){
-                    $('.log-in').removeClass('hidden');
-                    $('audio').hide();
-                }
-                
+                // alert('hola')
+                // estado.login(true);
             }
         },
         cargarUsuario : function(){
@@ -278,8 +295,6 @@ $(function(){
                     },240000);
                     setTimeout(function(){
                         apagar(9);
-                        prender(10);
-
                     },250000);
                 }
             });
@@ -464,5 +479,5 @@ $(function(){
             },app.time);
         }
     };
-
+    
 });

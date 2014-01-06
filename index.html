@@ -10,9 +10,10 @@
     <meta property="fb:page_id" content="" />
     <meta property="og:title" content="Tu Fotografia @PauVeelez" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://leonidasesteban.com/"/>
-    <meta property="og:image" content="pauveelez.jpg" />
+    <meta property="og:url" content="http://leonidasesteban.com/tu-fotografia/"/>
+    <meta property="og:image" content="http://leonidasesteban.com/tu-fotografia/pauveelez.jpg" />
     <meta property="og:site_name" content="LeonidasEsteban" />
+    <meta property="og:description" content="Revive tus mejores momentos." />
     <meta property="fb:admins" content="" />
 
     
@@ -92,9 +93,9 @@
             </p>
             <p>Que te tengo aquí
             </p>
-            <p>¿Me perdonas?
+            <!-- <p>¿Me perdonas?
                 <a class="si" href="http://twitter.com/home?status=He perdonado a @LeonidasEsteban lo amo y quiero darle besitos http://leonidasesteban.com/tu-fotografia/" >si</a><a href="" class="no">no</a>
-            </p>
+            </p> -->
         </div>
 
     </div>
@@ -102,18 +103,20 @@
     <script src="//connect.facebook.net/en_UK/all.js"></script>
     <script src="tu-fotografia.js"></script>
     <script type="text/javascript">
+      var analyticsFileTypes = [''];
+      var analyticsEventTracking = 'enabled';
 
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-28518727-1']);
-      _gaq.push(['_setDomainName', 'leonidasesteban.com']);
       _gaq.push(['_trackPageview']);
+      
+      setTimeout('_gaq.push([\'_trackEvent\', \'NoBounce\', \'Over 30 seconds\'])',30000);
 
       (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-
     </script>
 </body>
 </html>
